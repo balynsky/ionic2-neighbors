@@ -8,7 +8,7 @@ import {UserService} from "../../../services/user.service";
 import {IUser} from "../../../model/user";
 import {LogService} from "../../../services/log.service";
 import {NeighborItemPage} from "../../neighbors/neighbor_item/neighbor_item.page";
-import {Keyboard} from "ionic-native";
+import {Keyboard} from "@ionic-native/keyboard";
 import {ModalContentPage} from "../../../component/message.modal";
 
 @Component({
@@ -19,9 +19,10 @@ export class BoardItemPage {
     private chat: IRoom;
     private messages: Observable<IMessage[]>;
     private user: IUser;
-    private message;
+    private message:string;
 
-    constructor(private data: ChatService, params: NavParams, public modalCtrl: ModalController, private nav: NavController, private us: UserService) {
+    constructor(private data: ChatService, params: NavParams, public modalCtrl: ModalController, private nav: NavController, private us: UserService,
+                private keyboard: Keyboard) {
         this.chat = params.get("chatId");
         this.user = UserService.getCurrentUser();
         this.messages = data.getMessages("board_messages", this.chat.$key);
@@ -33,7 +34,7 @@ export class BoardItemPage {
             LogService.logMessage("BoardItemPage sendMessage success saved");
             this.message = '';
         }, false);
-        Keyboard.close();
+        this.keyboard.close();
 
     }
 

@@ -18,7 +18,7 @@ export class EventsService extends BaseService {
         //this.showLoading("Загрузка объявлений");
         //let flag = true;
         let fs = this.fs;
-        return Observable.create(observer=> {
+        return Observable.create((observer:any)=> {
             // Looking for how to type this well.
             let arr: any[] = [];
             const keyFieldName = "$key";
@@ -65,8 +65,8 @@ export class EventsService extends BaseService {
                 observer.next(arr.slice()); // Safe copy
             }
 
-            fs.db.ref("events/" + UserService.getCurrentUser().memberOf).limitToLast(10).on('child_added', (snapshot, prevChildKey)=> {
-                fs.db.ref("users/" + snapshot.val().user_id).once("value").then((snapshot2)=> {
+            fs.db.ref("events/" + UserService.getCurrentUser().memberOf).limitToLast(10).on('child_added', (snapshot:any, prevChildKey:any)=> {
+                fs.db.ref("users/" + snapshot.val().user_id).once("value").then((snapshot2:any)=> {
                     let event = new Event(snapshot.val().name, snapshot.val().text, snapshot.val().img);
                     event.user_id = snapshot.val().user_id;
                     event.user = UserService.mapUser(snapshot2.val());
@@ -75,8 +75,8 @@ export class EventsService extends BaseService {
             });
 
 
-            fs.db.ref("events/" + UserService.getCurrentUser().memberOf).limitToLast(10).on('child_changed', (snapshot)=> {
-                fs.db.ref("users/" + snapshot.val().user_id).once("value").then((snapshot2)=> {
+            fs.db.ref("events/" + UserService.getCurrentUser().memberOf).limitToLast(10).on('child_changed', (snapshot:any)=> {
+                fs.db.ref("users/" + snapshot.val().user_id).once("value").then((snapshot2:any)=> {
                     let event = new Event(snapshot.val().name, snapshot.val().text, snapshot.val().img);
                     event.user_id = snapshot.val().user_id;
                     event.user = UserService.mapUser(snapshot2.val());
@@ -84,13 +84,13 @@ export class EventsService extends BaseService {
                 });
             });
 
-            fs.db.ref("events/" + UserService.getCurrentUser().memberOf).limitToLast(10).on('child_removed', (snapshot)=> {
+            fs.db.ref("events/" + UserService.getCurrentUser().memberOf).limitToLast(10).on('child_removed', (snapshot:any)=> {
                 child_removed(snapshot.key, event);
             })
         })
     }
 
-    public addEvent(name: string, text: string, img: string, callback) {
+    public addEvent(name: string, text: string, img: string, callback:any) {
         let event = new Event(name, text, img);
         event.user = null;
         event.user_id = UserService.getCurrentUser().uid;

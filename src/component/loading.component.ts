@@ -11,14 +11,14 @@ import {Component} from "@angular/core";
 `
 })
 export class LoadingModal {
-    private isBusy;
-    private content;
+    private isBusy:boolean;
+    private content:any;
 
     constructor() {
         this.isBusy = false;
     }
 
-    show(content) {
+    show(content:any) {
         this.isBusy = true;
         this.content = content;
     }

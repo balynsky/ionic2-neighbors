@@ -29,12 +29,12 @@ export class ChatPage extends BasePage {
         this.privateRooms = cs.getRooms("private_rooms/" + this.user.memberOf + "/" + this.user.uid + "/", "private_messages/");
     }
 
-    public openChatRoom(id) {
+    public openChatRoom(id:any) {
         LogService.logMessage("openChatRoom id=",id);
         this.nav.push(RoomItemPage, {chatId: id});
     }
 
-    public openPrivateRoom(id) {
+    public openPrivateRoom(id:any) {
         LogService.logMessage("openPrivateRoom id=",id);
         this.nav.push(PrivateItemPage, {chatId: id});
     }

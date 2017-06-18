@@ -24,9 +24,9 @@ export class AddRoomPage extends BasePage {
         this.viewCtrl.dismiss();
     }
 
-    public addRoom($event) {
+    public addRoom($event:any) {
         LogService.logMessage("addRoom " + this.name.value);
-        this.data.addPublicRoom(this.name.value, (error)=> {
+        this.data.addPublicRoom(this.name.value, (error:any)=> {
             if (error) {
                 this.presentToast("Error: " + error);
             } else {

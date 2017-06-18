@@ -16,7 +16,7 @@ export class TabsPage {
     tab2Root:any = ChatPage;
     tab3Root:any = NeighborsPage;
 
-    tabIndex;
+    tabIndex:number;
 
     constructor(params:NavParams) {
         this.tabIndex = params.data.tabIndex || 0;

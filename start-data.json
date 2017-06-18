@@ -1,0 +1,17 @@
+{
+  "admins" : [ null, {
+    "UK7dJOKz1BYuNPIbIZIz4UD0NYj2" : true
+  } ],
+  "groups" : [ null, {
+    "members" : {
+      "UK7dJOKz1BYuNPIbIZIz4UD0NYj2" : true
+    },
+    "name" : "ЖК Продвинутый"
+  } ],
+  "users" : {
+    "UK7dJOKz1BYuNPIbIZIz4UD0NYj2" : {
+      "displayName" : "Admin User",
+      "memberOf" : 1
+    }
+  }
+}

@@ -11,11 +11,13 @@ export class FirebaseService {
     public auth: any;
 
     constructor(private events: Events) {
-        var config = {
-            apiKey: "AIzaSyAIhfL23XJd7Pvq6KbDThNb_saFUwd9QmI",
-            authDomain: "neighbors-dev-747bb.firebaseapp.com",
-            databaseURL: "https://neighbors-dev-747bb.firebaseio.com",
-            storageBucket: "neighbors-dev-747bb.appspot.com"
+        let config = {
+          apiKey: "AIzaSyBuvaFoO-HNL1-kjorMZ1cA-KHvMJvw1TA",
+          authDomain: "neighbors-test-ab048.firebaseapp.com",
+          databaseURL: "https://neighbors-test-ab048.firebaseio.com",
+          projectId: "neighbors-test-ab048",
+          storageBucket: "neighbors-test-ab048.appspot.com",
+          messagingSenderId: "759419423419"
         };
         firebase.initializeApp(config);
         // still pointing to the base,
@@ -28,7 +30,7 @@ export class FirebaseService {
         //noinspection TypeScriptUnresolvedVariable
         this.auth = firebase.auth();
 
-        this.auth.onAuthStateChanged((user)=> {
+        this.auth.onAuthStateChanged((user:any)=> {
             if (user) {
                 this.events.publish('user:login');
             } else {
@@ -45,7 +47,7 @@ export class FirebaseService {
     public logout() {
         this.auth.signOut().then(()=> {
             this.events.publish("user:logout");
-        }, function (error) {
+        }, function (error:any) {
             console.error(error);
         });
     }
@@ -60,18 +62,18 @@ export class FirebaseService {
         return new firebase.auth.GoogleAuthProvider();
     }
 
-    public loginWithFacebookAccessToken(token) {
+    public loginWithFacebookAccessToken(token:any) {
         //noinspection TypeScriptUnresolvedVariable
-        var credential = firebase.auth.FacebookAuthProvider.credential(token.access_token);
+        let credential = firebase.auth.FacebookAuthProvider.credential(token.access_token);
         // Sign in with the credential from the Facebook user.
         //noinspection TypeScriptUnresolvedVariable
-        firebase.auth().signInWithCredential(credential).then(function (result) {
-            var token = result.credential.accessToken;
-            var user = result.user;
+        firebase.auth().signInWithCredential(credential).then(function (result:any) {
+            let token = result.credential.accessToken;
+            let user = result.user;
             this.fs.db.ref("users/" + token).update({
                 'photoURL': user.photoURL
             });
-        }).catch(function (error) {
+        }).catch(function (error:any) {
             LogService.logMessage("Error: ", error);
         });
     }

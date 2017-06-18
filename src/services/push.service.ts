@@ -17,7 +17,7 @@ export class PushService {
     constructor(private platform: Platform, private http: Http, private events: Events, private gs: GroupsService) {
         this.events.subscribe('user:loaded', () => {
             LogService.logMessage(" listenToLoginEvents on PushService user:loaded");
-            gs.getPushClientId((id)=> {
+            gs.getPushClientId((id:any)=> {
                 PushService.CLIENT_ID = id;
             });
             //this.init();
@@ -101,8 +101,8 @@ export class PushService {
         if (this.platform.is("ios") || this.platform.is("android")) {
             let device_type = this.platform.is("ios") ? 'ios' : 'android';
             PushService.token = token;
-            var body = 'token=' + token + '&user_id=' + userId + '&group_id=' + groupId + '&device_type=' + device_type;
-            var headers = new Headers();
+            let body = 'token=' + token + '&user_id=' + userId + '&group_id=' + groupId + '&device_type=' + device_type;
+            let headers = new Headers();
             headers.append('Content-Type', 'application/x-www-form-urlencoded');
             headers.append('CLIENT_ID', PushService.CLIENT_ID);
             this.http.post(PushService.deviceUrl, body, {
@@ -120,7 +120,7 @@ export class PushService {
 
     public unregisterDevice(): void {
         if (this.platform.is("ios") || this.platform.is("android")) {
-            var headers = new Headers();
+            let headers = new Headers();
             headers.append('Content-Type', 'application/x-www-form-urlencoded');
             headers.append('CLIENT_ID', PushService.CLIENT_ID);
             this.http.delete(PushService.deviceUrl + "?token=" + PushService.token, {
@@ -137,7 +137,7 @@ export class PushService {
 
     public sendMessageToUser(message: string, userId: string): void {
         if (this.platform.is("ios") || this.platform.is("android")) {
-            var body = 'message=' + message + '&user_id=' + userId;
+            let body = 'message=' + message + '&user_id=' + userId;
             this.sendMessage(body);
         } else {
             LogService.logMessage("Platform is other");
@@ -146,7 +146,7 @@ export class PushService {
 
     public sendMessageToGroup(message: string, groupId: string): void {
         if (this.platform.is("ios") || this.platform.is("android")) {
-            var body = 'message=' + message + '&group_id=' + groupId;
+            let body = 'message=' + message + '&group_id=' + groupId;
             this.sendMessage(body);
         } else {
             LogService.logMessage("Platform is other");
@@ -154,7 +154,7 @@ export class PushService {
     }
 
     private sendMessage(body: any): void {
-        var headers = new Headers();
+        let headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         headers.append('CLIENT_ID', PushService.CLIENT_ID);
         this.http.post(PushService.messageUrl, body, {

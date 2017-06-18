@@ -36,7 +36,7 @@ export class GroupsPage extends BasePage {
         })
     }
 
-    public doAction(item) {
+    public doAction(item:any) {
         LogService.logMessage("doAction in GroupPage");
         if (this.activeItem === item) {
             this.data.removeInvite(item, UserService.getCurrentUser(), ()=> {

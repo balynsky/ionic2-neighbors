@@ -23,7 +23,7 @@ export class BoardPage extends BasePage {
         this.rooms = cs.getRooms("board_rooms/" + this.user.memberOf, "board_messages/");
     }
 
-    public openRoom(id) {
+    public openRoom(id:any) {
         LogService.logMessage("openBoardRoom id=", id);
         this.nav.push(BoardItemPage, {chatId: id});
     }

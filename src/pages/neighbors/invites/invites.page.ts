@@ -34,9 +34,9 @@ export class InvitesPage extends BasePage {
         })
     }
 
-    public acceptInvite(user) {
+    public acceptInvite(user:any) {
         LogService.logMessage("acceptInvite user: ", user);
-        this.us.updateUserGroup(user, UserService.getCurrentUser().memberOf, (error)=> {
+        this.us.updateUserGroup(user, UserService.getCurrentUser().memberOf, (error:any)=> {
             if (error) {
                 this.presentToast(error);
             } else {

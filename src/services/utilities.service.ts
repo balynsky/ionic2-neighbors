@@ -12,9 +12,9 @@ export class UtilitiesService extends BaseService {
         super(events);
     }
 
-    public getUtilities(callback) {
+    public getUtilities(callback:any) {
         let ref = this.fs.db.ref("utilities/" + UserService.getCurrentUser().memberOf + "/value");
-        ref.on('value', function (snapshot) {
+        ref.on('value', function (snapshot:any) {
             LogService.logMessage("UtilitiesService getUtilities ", snapshot.val());
             callback(snapshot.val());
         });

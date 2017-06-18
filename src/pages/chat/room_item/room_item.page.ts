@@ -1,6 +1,6 @@
-import {NavParams, ToastController, Content, ModalController} from "ionic-angular";
-import {Keyboard, Toast} from "ionic-native";
-import {Component, Input} from "@angular/core";
+import {ModalController, NavParams, ToastController} from "ionic-angular";
+import {Keyboard} from "@ionic-native/keyboard";
+import {Component} from "@angular/core";
 import {ChatService} from "../../../services/chat.service";
 import {IRoom} from "../../../model/room";
 import {Observable} from "rxjs/Observable";
@@ -19,7 +19,7 @@ export class RoomItemPage extends BasePage {
     private chat: IRoom;
     private messages: Observable<IMessage[]>;
     private user: IUser;
-    private message;
+    private message:any;
 
     constructor(protected toastCtrl: ToastController, public modalCtrl: ModalController, private data: ChatService, params: NavParams) {
         super(toastCtrl);
@@ -34,7 +34,7 @@ export class RoomItemPage extends BasePage {
             LogService.logMessage("RoomItemPage sendMessage success saved");
             this.message = '';
         });
-        Keyboard.close();
+        //Keyboard.close();
     }
 
     presentModal() {

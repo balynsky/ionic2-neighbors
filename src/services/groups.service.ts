@@ -15,15 +15,15 @@ export class GroupsService extends BaseService {
     }
 
     public getGroups(): Observable<IGroup[]> {
-        return this.observableFirebaseArray<IGroup>(this.fs.db.ref("groups"), (data)=> {
+        return this.observableFirebaseArray<IGroup>(this.fs.db.ref("groups"), (data:any)=> {
             let group = new Group(data.name);
             group.img = data.img;
             return group;
         });
     }
 
-    public getPushClientId(callback) {
-        this.fs.db.ref("groups/" + UserService.getCurrentUser().memberOf + "/client_id").once('value').then((snapshot)=> {
+    public getPushClientId(callback:any) {
+        this.fs.db.ref("groups/" + UserService.getCurrentUser().memberOf + "/client_id").once('value').then((snapshot:any)=> {
                 if (snapshot.exists()) {
                     callback(snapshot.val());
                 }
@@ -32,8 +32,8 @@ export class GroupsService extends BaseService {
     }
 
 
-    public createInvite(group: IGroup, callback) {
-        this.fs.db.ref("invite/" + group.$key + "/" + this.fs.auth.currentUser.uid).set("true", (error) => {
+    public createInvite(group: IGroup, callback:any) {
+        this.fs.db.ref("invite/" + group.$key + "/" + this.fs.auth.currentUser.uid).set("true", (error:any) => {
                 if (error) {
                     LogService.logMessage("GroupsService create invite error " + error);
                 } else {
@@ -43,9 +43,9 @@ export class GroupsService extends BaseService {
         );
     }
 
-    public removeInvite(group: IGroup, user: IUser, callback) {
+    public removeInvite(group: IGroup, user: IUser, callback:any) {
         let ref = this.fs.db.ref("invite/" + group.$key + "/" + user.$key);
-        ref.on('value', function (snapshot) {
+        ref.on('value', function (snapshot:any) {
             //http://stackoverflow.com/questions/11633008/firebase-child-removed-not-being-called
             if (snapshot.val() == null) {
                 LogService.logMessage("GroupsService invite remove");

@@ -21,12 +21,12 @@ export class NeighborItemPage extends BasePage {
     }
 
     public addPrivateChat() {
-        this.data.addPrivateRoom(this.neighbor, (error)=> {
+        this.data.addPrivateRoom(this.neighbor, (error:any)=> {
             if (error) {
                 this.presentToast("Error: " + error);
             }
-        }, (chat_key)=> {
-            this.data.getRoom("private_rooms/" + this.user.memberOf + "/" + UserService.getCurrentUser().uid + "/" + chat_key, (room)=> {
+        }, (chat_key:any)=> {
+            this.data.getRoom("private_rooms/" + this.user.memberOf + "/" + UserService.getCurrentUser().uid + "/" + chat_key, (room:any)=> {
                 this.nav.push(PrivateItemPage, {chatId: room});
             });
         })

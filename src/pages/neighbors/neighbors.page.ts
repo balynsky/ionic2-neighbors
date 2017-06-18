@@ -53,7 +53,7 @@ export class NeighborsPage extends BasePage {
         })
     }
 
-    public openDetail(item) {
+    public openDetail(item:any) {
         this.nav.push(NeighborItemPage, {"item": item})
     }
 

@@ -8,7 +8,7 @@ import "rxjs/add/observable/fromEvent";
 import {IUser} from "../../../model/user";
 import {IMessage} from "../../../model/message";
 import {LogService} from "../../../services/log.service";
-import {Keyboard} from "ionic-native";
+import {Keyboard} from "@ionic-native/keyboard";
 import {ModalContentPage} from "../../../component/message.modal";
 
 @Component({
@@ -22,7 +22,7 @@ export class PrivateItemPage {
     private chat: IRoom;
     private messages: Observable<IMessage[]>;
     private user: IUser;
-    private message;
+    private message:string;
 
     constructor(private data: ChatService, public modalCtrl: ModalController, params: NavParams) {
         this.chat = params.get("chatId");
@@ -38,12 +38,12 @@ export class PrivateItemPage {
             LogService.logMessage("PrivateItemPage sendMessage success saved");
             this.message = '';
         });
-        Keyboard.close();
+        //Keyboard.close();
     }
 
     presentModal() {
-        let modal = this.modalCtrl.create(ModalContentPage);
-        modal.onDidDismiss(data => {
+        let modal:any = this.modalCtrl.create(ModalContentPage);
+        modal.onDidDismiss((data:any) => {
             if (data != null) {
                 this.sendMessage(data);
             }

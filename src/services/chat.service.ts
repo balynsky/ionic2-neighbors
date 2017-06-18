@@ -66,14 +66,14 @@ export class ChatService extends BaseService {
                 observer.next(arr.slice()); // Safe copy
             }
 
-            fs.db.ref(rooms_name).on('child_added', (snapshot, prevChildKey)=> {
+            fs.db.ref(rooms_name).on('child_added', (snapshot:any, prevChildKey:any)=> {
                 //Remove message not support
                 let room = new Room(snapshot.val().name);
                 room.user_id = snapshot.val().user_id;
                 child_added(snapshot.key, room, prevChildKey);
                 if (room.user_id != null) {
                     LogService.logMessage("room.user_id!=null");
-                    fs.db.ref("users/" + room.user_id).once("value").then((snapshot2)=> {
+                    fs.db.ref("users/" + room.user_id).once("value").then((snapshot2:any)=> {
                         room.user = UserService.mapUser(snapshot2.val());
                         LogService.logMessage("room.user " + snapshot.key + " :", room.user);
                         if (findInArray(arr, (y:any) => y[keyFieldName] === snapshot.key) == null) {
@@ -85,7 +85,7 @@ export class ChatService extends BaseService {
                         }
                     });
                 }
-                fs.db.ref(message_name + snapshot.key).limitToLast(1).on("child_added", (snapshot2)=> {
+                fs.db.ref(message_name + snapshot.key).limitToLast(1).on("child_added", (snapshot2:any)=> {
                     room.lastMessage = new Message(snapshot2.val().text);
                     LogService.logMessage("room.lastMessage ", room.lastMessage);
                     if (findInArray(arr, (y:any) => y[keyFieldName] === snapshot.key) == null) {
@@ -96,21 +96,21 @@ export class ChatService extends BaseService {
                 });
             });
 
-            fs.db.ref(rooms_name).on('child_changed', (snapshot)=> {
+            fs.db.ref(rooms_name).on('child_changed', (snapshot:any)=> {
                 //Remove message not support
                 let room = new Room(snapshot.val().name);
                 room.user_id = snapshot.val().user_id;
                 child_changed(snapshot.key, room);
                 if (room.user_id != null) {
                     LogService.logMessage("room.user_id!=null");
-                    fs.db.ref("users/" + room.user_id).once("value").then((snapshot2)=> {
+                    fs.db.ref("users/" + room.user_id).once("value").then((snapshot2:any)=> {
                         room.user = UserService.mapUser(snapshot2.val());
                         LogService.logMessage("room.user " + snapshot.key + " :", room.user);
                         LogService.logMessage("room.user changed");
                         child_changed(snapshot.key, room);
                     });
                 }
-                fs.db.ref(message_name + snapshot.key).limitToLast(1).on("child_added", (snapshot2)=> {
+                fs.db.ref(message_name + snapshot.key).limitToLast(1).on("child_added", (snapshot2:any)=> {
                     let room = new Room(snapshot.val().name);
                     room.lastMessage = new Message(snapshot2.val().text);
                     LogService.logMessage("room.lastMessage ", room.lastMessage);
@@ -118,7 +118,7 @@ export class ChatService extends BaseService {
                 });
             });
 
-            fs.db.ref(rooms_name).on('child_removed', (snapshot, prevChildKey)=> {
+            fs.db.ref(rooms_name).on('child_removed', (snapshot:any, prevChildKey:any)=> {
                 child_removed(snapshot.key, snapshot.val());
             });
         })
@@ -174,14 +174,14 @@ export class ChatService extends BaseService {
                 observer.next(arr.slice()); // Safe copy
             }
 
-            fs.db.ref(rooms_name + '/' + key).on('child_added', (snapshot, prevChildKey)=> {
+            fs.db.ref(rooms_name + '/' + key).on('child_added', (snapshot:any, prevChildKey:any)=> {
                 //Remove message not support
                 let message = new Message(snapshot.val().text);
                 message.user_id = snapshot.val().user_id;
                 child_added(snapshot.key, message, prevChildKey);
                 if (message.user_id != null) {
                     LogService.logMessage("message.user_id!=null");
-                    fs.db.ref("users/" + message.user_id).once("value").then((snapshot2)=> {
+                    fs.db.ref("users/" + message.user_id).once("value").then((snapshot2:any)=> {
                         message.user = UserService.mapUser(snapshot2.val());
                         message.user.$key = snapshot2.key;
                         message.type = message.user.$key === UserService.getCurrentUser().$key ? "in" : "out";
@@ -198,14 +198,14 @@ export class ChatService extends BaseService {
             });
 
 
-            fs.db.ref(rooms_name + '/' + key).on('child_changed', (snapshot)=> {
+            fs.db.ref(rooms_name + '/' + key).on('child_changed', (snapshot:any)=> {
                 //Remove message not support
                 let message = new Message(snapshot.val().text);
                 message.user_id = snapshot.val().user_id;
                 child_changed(snapshot.key, message);
                 if (message.user_id != null) {
                     LogService.logMessage("message.user_id!=null");
-                    fs.db.ref("users/" + message.user_id).once("value").then((snapshot2)=> {
+                    fs.db.ref("users/" + message.user_id).once("value").then((snapshot2:any)=> {
                         message.user = UserService.mapUser(snapshot2.val());
                         message.user.$key = snapshot2.key;
                         message.type = (message.user.$key === UserService.getCurrentUser().$key) ? "in" : "out";
@@ -216,13 +216,13 @@ export class ChatService extends BaseService {
                 }
             });
 
-            fs.db.ref(rooms_name + '/' + key).on('child_removed', (snapshot, prevChildKey)=> {
+            fs.db.ref(rooms_name + '/' + key).on('child_removed', (snapshot:any, prevChildKey:any)=> {
                 child_removed(snapshot.key, snapshot.val());
             });
         })
     }
 
-    saveMessage(rooms_name:string, key:string, text:string, user_id:string, callback, push:boolean = true) {
+    saveMessage(rooms_name:string, key:string, text:string, user_id:string, callback:any, push:boolean = true) {
         let message = new Message(text);
         message.user_id = UserService.getCurrentUser().uid;
         this.fs.db.ref(rooms_name + "/" + key).push().set(message, callback);
@@ -235,7 +235,7 @@ export class ChatService extends BaseService {
         }
     }
 
-    addPublicRoom(room_name:string, callback) {
+    addPublicRoom(room_name:string, callback:any) {
         let room = new Room(room_name);
         room.user = null;
         room.user_id = UserService.getCurrentUser().uid;
@@ -243,7 +243,7 @@ export class ChatService extends BaseService {
 
     }
 
-    addBoardRoom(room_name:string, callback) {
+    addBoardRoom(room_name:string, callback:any) {
         let room = new Room(room_name);
         room.user = null;
         room.user_id = UserService.getCurrentUser().uid;
@@ -251,7 +251,7 @@ export class ChatService extends BaseService {
 
     }
 
-    addPrivateRoom(user:IUser, callback, success) {
+    addPrivateRoom(user:IUser, callback:any, success:any) {
         let room = new Room(user.displayName);
         let key = ChatService.generateKey(UserService.getCurrentUser().uid, user.$key);
         room.user = null;
@@ -263,15 +263,15 @@ export class ChatService extends BaseService {
         success(key);
     }
 
-    getRoom(room_name:string, callback) {
+    getRoom(room_name:string, callback:any) {
         LogService.logMessage("getRoom: " + room_name);
-        return this.fs.db.ref(room_name).once("value").then((snapshot)=> {
+        return this.fs.db.ref(room_name).once("value").then((snapshot:any)=> {
             let room = new Room(snapshot.val().name);
             room.user_id = snapshot.val().user_id;
             room.$key = snapshot.key;
             if (room.user_id != null) {
                 LogService.logMessage("room.user_id!=null");
-                this.fs.db.ref("users/" + room.user_id).once("value").then((snapshot2)=> {
+                this.fs.db.ref("users/" + room.user_id).once("value").then((snapshot2:any)=> {
                     room.user = UserService.mapUser(snapshot2.val());
                     callback(room);
                 });

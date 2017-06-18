@@ -33,8 +33,8 @@ export class AddEventPage extends BasePage {
         this.viewCtrl.dismiss();
     }
 
-    public addEvent($event) {
-        this.es.addEvent(this.name.value, this.text.value, this.imgSrc.value === '' ? null : this.imgSrc.value, (error)=> {
+    public addEvent($event:any) {
+        this.es.addEvent(this.name.value, this.text.value, this.imgSrc.value === '' ? null : this.imgSrc.value, (error:any)=> {
             if (error) {
                 this.presentToast("Error: " + error);
             } else {

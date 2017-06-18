@@ -1,6 +1,5 @@
-import {ViewController, NavParams, Platform} from "ionic-angular";
+import {ViewController} from "ionic-angular";
 import {Component} from "@angular/core";
-import {Autosize} from 'ionic2-autosize';
 
 @Component({
     template: `
@@ -34,7 +33,7 @@ import {Autosize} from 'ionic2-autosize';
 `
 })
 export class ModalContentPage {
-    message;
+    message:string;
 
     constructor(public viewCtrl: ViewController) {
     }

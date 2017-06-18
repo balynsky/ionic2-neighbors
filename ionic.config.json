@@ -1,6 +1,5 @@
 {
   "name": "neighbors",
   "app_id": "29ab4a8f",
-  "v2": true,
-  "typescript": true
+  "type": "ionic-angular"
 }

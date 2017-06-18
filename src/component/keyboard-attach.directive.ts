@@ -1,6 +1,5 @@
 import {Directive, ElementRef, Input} from "@angular/core";
 import {Content, Platform} from "ionic-angular";
-import {Toast} from "ionic-native";
 import {Subscription} from "rxjs/rx";
 
 
@@ -44,9 +43,7 @@ export class KeyboardAttachDirective {
 
     constructor(private elementRef: ElementRef,
                 private platform: Platform) {
-        Toast.show('KeyboardAttachDirective cons','short','center');
         if (this.platform.is('cordova') && this.platform.is('ios')) {
-            Toast.show('KeyboardAttachDirective ios','short','center');
             window.addEventListener('native.keyboardshow', this.onShow);
             window.addEventListener('native.keyboardhide', this.onHide);
             //this.onShowSubscription = cordova.plugins.Keyboard.onKeyboardShow().subscribe(e => this.onShow(e));
@@ -63,14 +60,12 @@ export class KeyboardAttachDirective {
         }
     }
 
-    private onShow(e) {
-        Toast.show('KeyboardAttachDirective onShow','short','center');
+    private onShow(e:any) {
         let keyboardHeight: number = e.keyboardHeight || (e.detail && e.detail.keyboardHeight);
         this.setElementPosition(keyboardHeight);
     };
 
     private onHide() {
-        Toast.show('KeyboardAttachDirective hide','short','center');
         this.setElementPosition(0);
     };
 

@@ -73,7 +73,7 @@ export class ProfilePage extends BasePage {
         this.user.mobile2 = this.mobile2.value;
         this.user.photoURL = this.photoURL.value;
 
-        this.us.updateUser(this.user, (error)=> {
+        this.us.updateUser(this.user, (error:any)=> {
             if (error) {
                 this.presentToast(error);
             } else {

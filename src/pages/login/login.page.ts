@@ -7,7 +7,7 @@ import {ValidationService} from "../../services/validator.service";
 import {LogService} from "../../services/log.service";
 import {BasePage} from "../base.page";
 import {UserService} from "../../services/user.service";
-declare var cordova:any;
+declare let cordova:any;
 
 @Component({
     selector: 'login-page',
@@ -28,11 +28,12 @@ export class LoginPage extends BasePage {
         this.password = this.loginForm.controls['password'];
     }
 
-    public onLogin(event) {
-        this.db.auth.signInWithEmailAndPassword(this.login.value, this.password.value).then((result)=> {
-            var user = result.user;
+    onLogin(event:any) {
+      LogService.logMessage("-> onLogin");
+        this.db.auth.signInWithEmailAndPassword(this.login.value, this.password.value).then((result:any)=> {
+            let user = result.user;
             LogService.logMessage("Email user ", user);
-        }).catch((error)=> {
+        }).catch((error:any)=> {
             this.presentToast(error);
             return;
         });
@@ -47,13 +48,13 @@ export class LoginPage extends BasePage {
                 this.presentToast(error);
             });
         } else {
-            var provider = this.db.getFacebookProvider();
-            this.db.auth.signInWithPopup(provider).then((result) => {
+            let provider = this.db.getFacebookProvider();
+            this.db.auth.signInWithPopup(provider).then((result:any) => {
                 // This gives you a Facebook Access Token. You can use it to access the Facebook API.
                 //var token = result.credential.accessToken;
-                var user = result.user;
+                let user = result.user;
                 LogService.logMessage("Facebook user ", user);
-            }).catch((error) => {
+            }).catch((error:any) => {
                 this.events.publish("user:logout");
                 this.presentToast(error);
             });
@@ -62,15 +63,15 @@ export class LoginPage extends BasePage {
 
     private facebookLogin() {
         return new Promise(function (resolve, reject) {
-            var browserRef = (<any>cordova).InAppBrowser.open("https://www.facebook.com/v2.0/dialog/oauth?client_id=245599175811882&redirect_uri=http://balynsky.su/callback&response_type=token&scope=email", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
-            browserRef.addEventListener("loadstart", (event) => {
-                if ((event.url).indexOf("http://balynsky.su/callback") === 0) {
-                    browserRef.removeEventListener("exit", (event) => {
+            let browserRef = (<any>cordova).InAppBrowser.open("https://www.facebook.com/v2.0/dialog/oauth?client_id=245599175811882&redirect_uri=http://balynsky.com/callback&response_type=token&scope=email", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+            browserRef.addEventListener("loadstart", (event:any) => {
+                if ((event.url).indexOf("http://balynsky.com/callback") === 0) {
+                    browserRef.removeEventListener("exit", (event:any) => {
                     });
                     browserRef.close();
-                    var responseParameters = ((event.url).split("#")[1]).split("&");
-                    var parsedResponse = {};
-                    for (var i = 0; i < responseParameters.length; i++) {
+                    let responseParameters = ((event.url).split("#")[1]).split("&");
+                    let parsedResponse = {};
+                    for (let i = 0; i < responseParameters.length; i++) {
                         parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
                     }
                     if (parsedResponse["access_token"] !== undefined && parsedResponse["access_token"] !== null) {
@@ -80,13 +81,13 @@ export class LoginPage extends BasePage {
                     }
                 }
             });
-            browserRef.addEventListener("exit", function (event) {
+            browserRef.addEventListener("exit", function (event:any) {
                 reject("The Facebook sign in flow was canceled");
             });
         });
     }
 
-    public registerUser(event) {
+    public registerUser(event:any) {
         this.nav.push(SignupPage);
     }
 

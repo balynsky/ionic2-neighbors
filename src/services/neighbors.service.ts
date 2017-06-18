@@ -14,7 +14,7 @@ export class NeighborsService extends BaseService {
     }
 
     public getMembersOfCurrentGroup():Observable<IUser[]> {
-        return this.observableFirebaseArray<IUser>(this.fs.db.ref("users").orderByChild("member_of").equalTo(UserService.user.memberOf), UserService.mapUser);
+        return this.observableFirebaseArray<IUser>(this.fs.db.ref("users").orderByChild("memberOf").equalTo(UserService.user.memberOf), UserService.mapUser);
     }
 
 

@@ -26,16 +26,16 @@
       ".read":"false",
       ".write":"false",
       "$groupId":{
-        ".read":"root.child('public_rooms/'+root.child('users/'+auth.uid+'/member_of').val()+'/'+$groupId).exists()",
-        ".write":"root.child('public_rooms/'+root.child('users/'+auth.uid+'/member_of').val()+'/'+$groupId).exists()"
+        ".read":"root.child('public_rooms/'+root.child('users/'+auth.uid+'/memberOf').val()+'/'+$groupId).exists()",
+        ".write":"root.child('public_rooms/'+root.child('users/'+auth.uid+'/memberOf').val()+'/'+$groupId).exists()"
       }
     },
     "board_messages":{
       ".read":"false",
       ".write":"false",
       "$groupId":{
-        ".read":"root.child('board_rooms/'+root.child('users/'+auth.uid+'/member_of').val()+'/'+$groupId).exists()",
-        ".write":"root.child('board_rooms/'+root.child('users/'+auth.uid+'/member_of').val()+'/'+$groupId).exists()"
+        ".read":"root.child('board_rooms/'+root.child('users/'+auth.uid+'/memberOf').val()+'/'+$groupId).exists()",
+        ".write":"root.child('board_rooms/'+root.child('users/'+auth.uid+'/memberOf').val()+'/'+$groupId).exists()"
       }
     },
     "private_rooms":{
@@ -54,17 +54,17 @@
       ".read":"false",
       ".write":"false",
       "$groupId":{
-        ".read":"root.child('private_rooms/'+root.child('users/'+auth.uid+'/member_of').val()+'/'+auth.uid+'/'+$groupId).exists()",
-        ".write":"root.child('private_rooms/'+root.child('users/'+auth.uid+'/member_of').val()+'/'+auth.uid+'/'+$groupId).exists()"
+        ".read":"root.child('private_rooms/'+root.child('users/'+auth.uid+'/memberOf').val()+'/'+auth.uid+'/'+$groupId).exists()",
+        ".write":"root.child('private_rooms/'+root.child('users/'+auth.uid+'/memberOf').val()+'/'+auth.uid+'/'+$groupId).exists()"
       }
     },
     "users": {
       ".read": "auth != null",
       "$userId": {
         // Only authenticated user can read and make chanages on it's own data (auth.id equal to $userId)
-        ".read": "(auth != null) && ((auth.uid === $userId)||(root.child('groups/'+data.child('member_of').val()+'/members/'+auth.uid).exists()))",
-        ".write": "(auth != null) && ((auth.uid === $userId) || (!data.child('member_of').exists() && root.child('admins/'+newData.child('member_of').val()+'/'+auth.uid).exists()))",
-        "member_of": {
+        ".read": "(auth != null) && ((auth.uid === $userId)||(root.child('groups/'+data.child('memberOf').val()+'/members/'+auth.uid).exists()))",
+        ".write": "(auth != null) && ((auth.uid === $userId) || (!data.child('memberOf').exists() && root.child('admins/'+newData.child('memberOf').val()+'/'+auth.uid).exists()))",
+        "memberOf": {
           ".validate":"root.child('groups/'+newData.val()).exists()"}
       }
     },

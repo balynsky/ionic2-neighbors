@@ -21,7 +21,7 @@ export class AvatarComponent {
     constructor(public app:App) {
     }
 
-    editProfile(user) {
+    editProfile(user:any) {
         this.app.getActiveNav().push(ProfilePage);
     }
 }

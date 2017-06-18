@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {CallNumber} from "ionic-native";
+import {CallNumber} from "@ionic-native/call-number";
 import {BasePage} from "../base.page";
 import {ToastController} from "ionic-angular";
 
@@ -8,13 +8,13 @@ import {ToastController} from "ionic-angular";
 })
 export class StartPage extends BasePage {
 
-    constructor(protected toastCtrl: ToastController) {
+    constructor(protected toastCtrl: ToastController, private call: CallNumber ) {
         super(toastCtrl);
 
     }
 
     public test(): void {
-        CallNumber.callNumber('380630000000', true)
+        this.call.callNumber('380630000000', true)
             .then(() => this.presentToast('Launched dialer!'))
 
     }

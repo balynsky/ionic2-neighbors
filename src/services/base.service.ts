@@ -8,7 +8,7 @@ export class BaseService {
     constructor(public events:Events) {
     }
 
-    protected showLoading(content) {
+    protected showLoading(content:any) {
         this.events.publish("loader:start", content);
     }
 
@@ -29,7 +29,7 @@ export class BaseService {
         });
     }
 
-    protected observableFirebaseArray<T>(ref:any, convert):Observable<T[]> {
+    protected observableFirebaseArray<T>(ref:any, convert:any):Observable<T[]> {
         return Observable.create(function (observer:any) {
             // Looking for how to type this well.
             let arr:T[] = [];

@@ -11,7 +11,7 @@ export class UtilitiesPage {
 
     constructor(private us: UtilitiesService) {
         LogService.logMessage("UtilitiesPage constructor");
-        us.getUtilities((str)=> {
+        us.getUtilities((str:any)=> {
             LogService.logMessage("UtilitiesPage getUtilities " + str);
             this.content = str;
         })
