@@ -1,44 +1,50 @@
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle icon-only>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>
-            Окно входа
-        </ion-title>
-    </ion-navbar>
 </ion-header>
 <ion-content>
-    <div class="center"></div>
-    <div class="logo">
-        <img src="assets/img/logo.png"/>
-    </div>
+  <div class="center"></div>
+  <div class="logo">
+    <img src="assets/img/logo.png"/>
+  </div>
+
+  <div class="border">
 
     <form [formGroup]="loginForm" novalidate>
-        <ion-item [class.error]="!login.valid && login.touched">
-            <ion-label floating primary>Пользователь(email)</ion-label>
-            <ion-input formControlName="login" type="text"></ion-input>
-        </ion-item>
+      <ion-row align-items-center no-padding padding-top>
+        <ion-col no-padding>
+          <ion-label class="label" no-margin text-uppercase>Email</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-item no-padding padding-bottom [class.error]="!login.valid && login.touched">
+        <ion-input class="input inner-item" formControlName="login" clearInput type="text"></ion-input>
+      </ion-item>
 
-        <ion-item [class.error]="!password.valid && password.touched">
-            <ion-label floating primary>Пароль</ion-label>
-            <ion-input formControlName="password" type="password"></ion-input>
-        </ion-item>
-        <!--<p [hidden]="password.valid || submitted == false" danger padding-left>
-            Password is required
-        </p>-->
+      <ion-row align-items-center padding-top>
+        <ion-col no-padding>
+          <ion-label class="label" no-margin text-uppercase>Пароль</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-item no-padding [class.error]="!password.valid && password.touched">
+        <ion-input class="input" formControlName="password" type="password"></ion-input>
+      </ion-item>
 
-        <div padding>
-            <button ion-button block (click)="onLogin($event)">Войти</button>
-            <div class="center"></div>
-            <button ion-button block small clear (click)="registerUser($event)">Создать аккаунт</button>
-        </div>
-        <div padding>
-            <button ion-button block class="facebook-btn" (click)="registerUserWithFacebook()">
-                <ion-icon name="logo-facebook"></ion-icon>
-                &nbsp; Войти через Facebook
-            </button>
-        </div>
+      <ion-row no-padding padding-top>
+        <ion-col no-padding>
+          <button class="log-in-btn" ion-button block (click)="onLogin($event)">Войти</button>
+        </ion-col>
+        <ion-col no-padding padding-left no-margin>
+          <button class="facebook-btn" ion-button block (click)="registerUserWithFacebook()">
+            <ion-icon name="logo-facebook"></ion-icon>
+            &nbsp;Facebook
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <div padding>
+        <ion-col no-padding>
+          <button class="reg-btn" ion-button block clear (click)="registerUser($event)">Зарегистрироваться</button>
+        </ion-col>
+      </div>
     </form>
+  </div>
 
 </ion-content>

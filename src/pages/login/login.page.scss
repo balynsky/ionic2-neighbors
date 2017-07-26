@@ -1,34 +1,45 @@
 login-page {
   .facebook-btn {
     background-color: #3b5998;
-    margin: auto;
-    margin-bottom: 5px;
-  }
-
-  .google-btn {
-    background-color: #d34836;
-    margin: auto;
-    margin-bottom: 5px;
-  }
-
-  .sign-up-btn {
-    margin-top: 5%;
-    margin-left: 2.5%;
-    width: 46%;
   }
 
   .log-in-btn {
-    margin-top: 5%;
-    margin-left: 2%;
-    width: 46%;
+    background-color: map-get($colors, app_primary);
+  }
+
+  .reg-btn {
+    color: map-get($colors, app_primary);
   }
 
   .logo {
     width: 100%;
+    padding-top: 10%;
     text-align: center;
   }
 
-  .center {
-    padding: 5px;
+  .border {
+    margin: 12%;
+    border: 3px solid map-get($colors, app_primary);
+    padding: 7px;
   }
+
+  .label {
+    color: map-get($colors, app_primary);
+    text-align: center;
+    font-size: larger;
+  }
+
+  .input {
+    color: map-get($colors, app_primary);
+  }
+
+  .item-inner:not(.item-input-has-focus) {
+    box-shadow: none!important;
+  }
+
+  .item-inner {
+    border-bottom: 2px solid map-get($colors, app_primary)!important;
+    box-shadow: none;
+  }
+
 }
