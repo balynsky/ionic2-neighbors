@@ -7,32 +7,32 @@ import {LogService} from "../../../../services/log.service";
 
 
 @Component({
-    templateUrl: 'add_room.page.html'
+  templateUrl: 'add_room.page.html'
 })
 export class AddRoomPage extends BasePage {
-    name:AbstractControl;
-    form = new FormGroup({
-        name: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)]))
+  name: AbstractControl;
+  form = new FormGroup({
+    name: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)]))
+  });
+
+  constructor(public data: ChatService, public viewCtrl: ViewController, toastCtrl: ToastController) {
+    super(toastCtrl);
+    this.name = this.form.controls['name'];
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+
+  addRoom($event: any) {
+    LogService.logMessage("addRoom " + this.name.value);
+    this.data.addPublicRoom(this.name.value, (error: any) => {
+      if (error) {
+        this.presentToast("Error: " + error);
+      } else {
+        this.dismiss();
+      }
     });
-
-    constructor(public data:ChatService, public viewCtrl:ViewController, toastCtrl:ToastController) {
-        super(toastCtrl);
-        this.name = this.form.controls['name'];
-    }
-
-    private dismiss() {
-        this.viewCtrl.dismiss();
-    }
-
-    public addRoom($event:any) {
-        LogService.logMessage("addRoom " + this.name.value);
-        this.data.addPublicRoom(this.name.value, (error:any)=> {
-            if (error) {
-                this.presentToast("Error: " + error);
-            } else {
-                this.dismiss();
-            }
-        });
-    }
+  }
 
 }

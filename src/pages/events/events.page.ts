@@ -8,19 +8,19 @@ import {AddEventPage} from "./add_event/add_event.page";
 
 
 @Component({
-    templateUrl: 'events.page.html',
+  templateUrl: 'events.page.html',
 })
 export class EventsPage {
-    private items:Observable<any>;
-    private us:IUser;
+  items: Observable<any>;
+  us: IUser;
 
-    constructor(es:EventsService, private nav:NavController, private modalCtrl:ModalController) {
-        this.items = es.getEvents();
-        this.us = UserService.getCurrentUser();
-    }
+  constructor(es: EventsService, private nav: NavController, private modalCtrl: ModalController) {
+    this.items = es.getEvents();
+    this.us = UserService.getCurrentUser();
+  }
 
-    public createEvent() {
-        let modal = this.modalCtrl.create(AddEventPage, {charNum: 1});
-        modal.present();
-    }
+  createEvent() {
+    let modal = this.modalCtrl.create(AddEventPage, {charNum: 1});
+    modal.present();
+  }
 }

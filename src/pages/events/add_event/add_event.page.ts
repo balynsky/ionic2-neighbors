@@ -6,41 +6,41 @@ import {BasePage} from "../../base.page";
 
 
 @Component({
-    templateUrl: 'add_event.page.html',
+  templateUrl: 'add_event.page.html',
 })
 export class AddEventPage extends BasePage {
-    name:AbstractControl;
-    text:AbstractControl;
-    imgSrc:AbstractControl;
+  name: AbstractControl;
+  text: AbstractControl;
+  imgSrc: AbstractControl;
 
-    eventForm = new FormGroup({
-        name: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)])),
-        text: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)])),
-        imgSrc: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)]))
+  eventForm = new FormGroup({
+    name: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)])),
+    text: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)])),
+    imgSrc: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)]))
 
+  });
+
+
+  constructor(private es: EventsService, private viewCtrl: ViewController, toastCtrl: ToastController) {
+    super(toastCtrl);
+
+    this.name = this.eventForm.controls['name'];
+    this.text = this.eventForm.controls['text'];
+    this.imgSrc = this.eventForm.controls['imgSrc'];
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+
+  addEvent($event: any) {
+    this.es.addEvent(this.name.value, this.text.value, this.imgSrc.value === '' ? null : this.imgSrc.value, (error: any) => {
+      if (error) {
+        this.presentToast("Error: " + error);
+      } else {
+        this.dismiss();
+      }
     });
-
-
-    constructor(private es:EventsService, private viewCtrl:ViewController, toastCtrl:ToastController) {
-        super(toastCtrl);
-
-        this.name = this.eventForm.controls['name'];
-        this.text = this.eventForm.controls['text'];
-        this.imgSrc = this.eventForm.controls['imgSrc'];
-    }
-
-    private dismiss() {
-        this.viewCtrl.dismiss();
-    }
-
-    public addEvent($event:any) {
-        this.es.addEvent(this.name.value, this.text.value, this.imgSrc.value === '' ? null : this.imgSrc.value, (error:any)=> {
-            if (error) {
-                this.presentToast("Error: " + error);
-            } else {
-                this.dismiss();
-            }
-        });
-    }
+  }
 
 }

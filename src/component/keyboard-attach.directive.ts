@@ -33,44 +33,44 @@ import {Subscription} from "rxjs/rx";
  */
 
 @Directive({
-    selector: '[keyboardAttach]'
+  selector: '[keyboardAttach]'
 })
 export class KeyboardAttachDirective {
-    @Input('keyboardAttach') content: Content;
+  @Input('keyboardAttach') content: Content;
 
-    private onShowSubscription: Subscription;
-    private onHideSubscription: Subscription;
+  private onShowSubscription: Subscription;
+  private onHideSubscription: Subscription;
 
-    constructor(private elementRef: ElementRef,
-                private platform: Platform) {
-        if (this.platform.is('cordova') && this.platform.is('ios')) {
-            window.addEventListener('native.keyboardshow', this.onShow);
-            window.addEventListener('native.keyboardhide', this.onHide);
-            //this.onShowSubscription = cordova.plugins.Keyboard.onKeyboardShow().subscribe(e => this.onShow(e));
-            //this.onHideSubscription = cordova.plugins.Keyboard.onKeyboardHide().subscribe(() => this.onHide());
-        }
+  constructor(private elementRef: ElementRef,
+              private platform: Platform) {
+    if (this.platform.is('cordova') && this.platform.is('ios')) {
+      window.addEventListener('native.keyboardshow', this.onShow);
+      window.addEventListener('native.keyboardhide', this.onHide);
+      //this.onShowSubscription = cordova.plugins.Keyboard.onKeyboardShow().subscribe(e => this.onShow(e));
+      //this.onHideSubscription = cordova.plugins.Keyboard.onKeyboardHide().subscribe(() => this.onHide());
     }
+  }
 
-    ngOnDestroy() {
-        if (this.onShowSubscription) {
-            this.onShowSubscription.unsubscribe();
-        }
-        if (this.onHideSubscription) {
-            this.onHideSubscription.unsubscribe();
-        }
+  ngOnDestroy() {
+    if (this.onShowSubscription) {
+      this.onShowSubscription.unsubscribe();
     }
-
-    private onShow(e:any) {
-        let keyboardHeight: number = e.keyboardHeight || (e.detail && e.detail.keyboardHeight);
-        this.setElementPosition(keyboardHeight);
-    };
-
-    private onHide() {
-        this.setElementPosition(0);
-    };
-
-    private setElementPosition(pixels: number) {
-        this.elementRef.nativeElement.style.paddingBottom = pixels + 'px';
-        this.content.resize();
+    if (this.onHideSubscription) {
+      this.onHideSubscription.unsubscribe();
     }
+  }
+
+  onShow(e: any) {
+    let keyboardHeight: number = e.keyboardHeight || (e.detail && e.detail.keyboardHeight);
+    this.setElementPosition(keyboardHeight);
+  };
+
+  onHide() {
+    this.setElementPosition(0);
+  };
+
+  setElementPosition(pixels: number) {
+    this.elementRef.nativeElement.style.paddingBottom = pixels + 'px';
+    this.content.resize();
+  }
 }

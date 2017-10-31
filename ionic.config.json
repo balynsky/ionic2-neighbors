@@ -1,5 +1,8 @@
 {
   "name": "neighbors",
   "app_id": "29ab4a8f",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

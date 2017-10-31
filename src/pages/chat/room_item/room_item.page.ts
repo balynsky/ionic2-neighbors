@@ -12,40 +12,40 @@ import {BasePage} from "../../base.page";
 import {ModalContentPage} from "../../../component/message.modal";
 
 @Component({
-    selector: 'room-item-page',
-    templateUrl: 'room_item.page.html'
+  selector: 'room-item-page',
+  templateUrl: 'room_item.page.html'
 })
 export class RoomItemPage extends BasePage {
-    private chat: IRoom;
-    private messages: Observable<IMessage[]>;
-    private user: IUser;
-    private message:any;
+  chat: IRoom;
+  messages: Observable<IMessage[]>;
+  user: IUser;
+  message: any;
 
-    constructor(protected toastCtrl: ToastController, public modalCtrl: ModalController, private data: ChatService, params: NavParams) {
-        super(toastCtrl);
-        this.chat = params.get("chatId");
-        this.user = UserService.getCurrentUser();
-        this.messages = data.getMessages("public_messages", this.chat.$key);
-    }
+  constructor(protected toastCtrl: ToastController, public modalCtrl: ModalController, private data: ChatService, params: NavParams) {
+    super(toastCtrl);
+    this.chat = params.get("chatId");
+    this.user = UserService.getCurrentUser();
+    this.messages = data.getMessages("public_messages", this.chat.$key);
+  }
 
-    public sendMessage(message: string) {
-        LogService.logMessage("RoomItemPage sendMessage ", message);
-        this.data.saveMessage("public_messages", this.chat.$key, message, null, ()=> {
-            LogService.logMessage("RoomItemPage sendMessage success saved");
-            this.message = '';
-        });
-        //Keyboard.close();
-    }
+  sendMessage(message: string) {
+    LogService.logMessage("RoomItemPage sendMessage ", message);
+    this.data.saveMessage("public_messages", this.chat.$key, message, null, () => {
+      LogService.logMessage("RoomItemPage sendMessage success saved");
+      this.message = '';
+    });
+    //Keyboard.close();
+  }
 
-    presentModal() {
-        let modal = this.modalCtrl.create(ModalContentPage);
-        modal.onDidDismiss(data => {
-            if (data !== null) {
-                this.sendMessage(data);
-            }
-        });
-        modal.present();
-    }
+  presentModal() {
+    let modal = this.modalCtrl.create(ModalContentPage);
+    modal.onDidDismiss(data => {
+      if (data !== null) {
+        this.sendMessage(data);
+      }
+    });
+    modal.present();
+  }
 
 
 }

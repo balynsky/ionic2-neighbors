@@ -11,25 +11,25 @@ import {AddBoardPage} from "./add_room/add_room.page";
 import {BoardItemPage} from "./item/board_item.page";
 
 @Component({
-    templateUrl: 'board.page.html',
+  templateUrl: 'board.page.html',
 })
 export class BoardPage extends BasePage {
-    user:IUser;
-    rooms:Observable<IRoom[]>;
+  user: IUser;
+  rooms: Observable<IRoom[]>;
 
-    constructor(public nav:NavController, cs:ChatService, toastCtrl:ToastController) {
-        super(toastCtrl);
-        this.user = UserService.getCurrentUser();
-        this.rooms = cs.getRooms("board_rooms/" + this.user.memberOf, "board_messages/");
-    }
+  constructor(public nav: NavController, cs: ChatService, toastCtrl: ToastController) {
+    super(toastCtrl);
+    this.user = UserService.getCurrentUser();
+    this.rooms = cs.getRooms("board_rooms/" + this.user.memberOf, "board_messages/");
+  }
 
-    public openRoom(id:any) {
-        LogService.logMessage("openBoardRoom id=", id);
-        this.nav.push(BoardItemPage, {chatId: id});
-    }
+  openRoom(id: any) {
+    LogService.logMessage("openBoardRoom id=", id);
+    this.nav.push(BoardItemPage, {chatId: id});
+  }
 
-    public createTopic() {
-        this.nav.push(AddBoardPage);
-    }
+  createTopic() {
+    this.nav.push(AddBoardPage);
+  }
 
 }

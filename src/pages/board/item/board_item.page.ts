@@ -12,45 +12,45 @@ import {Keyboard} from "@ionic-native/keyboard";
 import {ModalContentPage} from "../../../component/message.modal";
 
 @Component({
-    selector: 'board-item-page',
-    templateUrl: 'board_item.page.html',
+  selector: 'board-item-page',
+  templateUrl: 'board_item.page.html',
 })
 export class BoardItemPage {
-    private chat: IRoom;
-    private messages: Observable<IMessage[]>;
-    private user: IUser;
-    private message:string;
+  chat: IRoom;
+  messages: Observable<IMessage[]>;
+  user: IUser;
+  message: string;
 
-    constructor(private data: ChatService, params: NavParams, public modalCtrl: ModalController, private nav: NavController, private us: UserService,
-                private keyboard: Keyboard) {
-        this.chat = params.get("chatId");
-        this.user = UserService.getCurrentUser();
-        this.messages = data.getMessages("board_messages", this.chat.$key);
-    }
+  constructor(private data: ChatService, params: NavParams, public modalCtrl: ModalController, private nav: NavController, private us: UserService,
+              private keyboard: Keyboard) {
+    this.chat = params.get("chatId");
+    this.user = UserService.getCurrentUser();
+    this.messages = data.getMessages("board_messages", this.chat.$key);
+  }
 
-    public sendMessage(message: string) {
-        LogService.logMessage("BoardItemPage sendMessage " + this.chat.$key + " ", message);
-        this.data.saveMessage("board_messages", this.chat.$key, message, null, ()=> {
-            LogService.logMessage("BoardItemPage sendMessage success saved");
-            this.message = '';
-        }, false);
-        this.keyboard.close();
+  sendMessage(message: string) {
+    LogService.logMessage("BoardItemPage sendMessage " + this.chat.$key + " ", message);
+    this.data.saveMessage("board_messages", this.chat.$key, message, null, () => {
+      LogService.logMessage("BoardItemPage sendMessage success saved");
+      this.message = '';
+    }, false);
+    this.keyboard.close();
 
-    }
+  }
 
-    public openUser(message: IMessage) {
-        LogService.logMessage("openUser ", message.user.$key);
-        this.nav.push(NeighborItemPage, {"item": message.user});
-    }
+  openUser(message: IMessage) {
+    LogService.logMessage("openUser ", message.user.$key);
+    this.nav.push(NeighborItemPage, {"item": message.user});
+  }
 
-    presentModal() {
-        let modal = this.modalCtrl.create(ModalContentPage);
-        modal.onDidDismiss(data => {
-            if (data !== null) {
-                this.sendMessage(data);
-            }
-        });
-        modal.present();
-    }
+  presentModal() {
+    let modal = this.modalCtrl.create(ModalContentPage);
+    modal.onDidDismiss(data => {
+      if (data !== null) {
+        this.sendMessage(data);
+      }
+    });
+    modal.present();
+  }
 
 }

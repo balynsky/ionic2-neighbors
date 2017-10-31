@@ -8,15 +8,15 @@ export class BaseService {
     constructor(public events:Events) {
     }
 
-    protected showLoading(content:any) {
+  showLoading(content: any) {
         this.events.publish("loader:start", content);
     }
 
-    protected hideLoading() {
+  hideLoading() {
         this.events.publish("loader:stop");
     }
 
-    protected observableFirebaseObject<T>(ref:any):Observable<T> {
+  observableFirebaseObject<T>(ref: any): Observable<T> {
         return Observable.create(function (observer:any) {
             function value(snapshot:any) {
                 observer.next(snapshot.val());
@@ -29,7 +29,7 @@ export class BaseService {
         });
     }
 
-    protected observableFirebaseArray<T>(ref:any, convert:any):Observable<T[]> {
+  observableFirebaseArray<T>(ref: any, convert: any): Observable<T[]> {
         return Observable.create(function (observer:any) {
             // Looking for how to type this well.
             let arr:T[] = [];

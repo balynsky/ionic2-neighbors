@@ -8,13 +8,13 @@ import {BaseService} from "./base.service";
 //https://webcake.co/using-firebase-3-in-angular-2-and-ionic-2/
 @Injectable()
 export class UserService extends BaseService {
-  public static user: IUser = null;
+  static user: IUser = null;
 
   constructor(public events: Events, public fs: FirebaseService) {
     super(events);
   }
 
-  public loadUserData(): void {
+  loadUserData(): void {
     this.fs.db.ref("users/" + this.fs.auth.currentUser.uid).once('value').then((snapshot: any) => {
         if (snapshot.exists()) {
           UserService.user = UserService.mapUser(snapshot.val());

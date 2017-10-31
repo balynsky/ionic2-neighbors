@@ -9,13 +9,13 @@ import {BaseService} from "./base.service";
 @Injectable()
 export class NeighborsService extends BaseService {
 
-    constructor(public fs:FirebaseService, events:Events) {
-        super(events);
-    }
+  constructor(public fs: FirebaseService, events: Events) {
+    super(events);
+  }
 
-    public getMembersOfCurrentGroup():Observable<IUser[]> {
-        return this.observableFirebaseArray<IUser>(this.fs.db.ref("users").orderByChild("memberOf").equalTo(UserService.user.memberOf), UserService.mapUser);
-    }
+  getMembersOfCurrentGroup(): Observable<IUser[]> {
+    return this.observableFirebaseArray<IUser>(this.fs.db.ref("users").orderByChild("memberOf").equalTo(UserService.user.memberOf), UserService.mapUser);
+  }
 
 
 }

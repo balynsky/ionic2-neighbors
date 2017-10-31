@@ -12,40 +12,40 @@ import {AddRoomPage} from "./room_item/add_room/add_room.page";
 import {BasePage} from "../base.page";
 
 @Component({
-    templateUrl: 'chat.page.html',
+  templateUrl: 'chat.page.html',
 })
 export class ChatPage extends BasePage {
-    user:IUser;
-    type:string = "rooms";
-    isAndroid:boolean = false;
-    rooms:Observable<IRoom[]>;
-    privateRooms:Observable<IRoom[]>;
+  user: IUser;
+  type: string = "rooms";
+  isAndroid: boolean = false;
+  rooms: Observable<IRoom[]>;
+  privateRooms: Observable<IRoom[]>;
 
-    constructor(platform:Platform, public nav:NavController, cs:ChatService, toastCtrl:ToastController) {
-        super(toastCtrl);
-        this.isAndroid = platform.is('android');
-        this.user = UserService.getCurrentUser();
-        this.rooms = cs.getRooms("public_rooms/" + this.user.memberOf, "public_messages/");
-        this.privateRooms = cs.getRooms("private_rooms/" + this.user.memberOf + "/" + this.user.uid + "/", "private_messages/");
-    }
+  constructor(platform: Platform, public nav: NavController, cs: ChatService, toastCtrl: ToastController) {
+    super(toastCtrl);
+    this.isAndroid = platform.is('android');
+    this.user = UserService.getCurrentUser();
+    this.rooms = cs.getRooms("public_rooms/" + this.user.memberOf, "public_messages/");
+    this.privateRooms = cs.getRooms("private_rooms/" + this.user.memberOf + "/" + this.user.uid + "/", "private_messages/");
+  }
 
-    public openChatRoom(id:any) {
-        LogService.logMessage("openChatRoom id=",id);
-        this.nav.push(RoomItemPage, {chatId: id});
-    }
+  openChatRoom(id: any) {
+    LogService.logMessage("openChatRoom id=", id);
+    this.nav.push(RoomItemPage, {chatId: id});
+  }
 
-    public openPrivateRoom(id:any) {
-        LogService.logMessage("openPrivateRoom id=",id);
-        this.nav.push(PrivateItemPage, {chatId: id});
-    }
+  openPrivateRoom(id: any) {
+    LogService.logMessage("openPrivateRoom id=", id);
+    this.nav.push(PrivateItemPage, {chatId: id});
+  }
 
-    public createPrivateTopic() {
-        LogService.logMessage("createPrivateTopic");
-        this.presentToast("Кнопка будет активна в след. версии приложения. Написать сообщение можно через список соседей")
-    }
+  createPrivateTopic() {
+    LogService.logMessage("createPrivateTopic");
+    this.presentToast("Кнопка будет активна в след. версии приложения. Написать сообщение можно через список соседей")
+  }
 
-    public createPublicTopic() {
-        this.nav.push(AddRoomPage);
-    }
+  createPublicTopic() {
+    this.nav.push(AddRoomPage);
+  }
 
 }

@@ -3,18 +3,18 @@ import {LogService} from "../../services/log.service";
 import {UtilitiesService} from "../../services/utilities.service";
 
 @Component({
-    selector: 'utilities-page',
-    templateUrl: 'utilities.page.html'
+  selector: 'utilities-page',
+  templateUrl: 'utilities.page.html'
 })
 export class UtilitiesPage {
-    private content: string = 'Коммунальные услуги';
+  content: string = 'Коммунальные услуги';
 
-    constructor(private us: UtilitiesService) {
-        LogService.logMessage("UtilitiesPage constructor");
-        us.getUtilities((str:any)=> {
-            LogService.logMessage("UtilitiesPage getUtilities " + str);
-            this.content = str;
-        })
-    }
+  constructor(private us: UtilitiesService) {
+    LogService.logMessage("UtilitiesPage constructor");
+    us.getUtilities((str: any) => {
+      LogService.logMessage("UtilitiesPage getUtilities " + str);
+      this.content = str;
+    })
+  }
 
 }

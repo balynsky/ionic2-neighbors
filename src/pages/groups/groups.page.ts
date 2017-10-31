@@ -9,50 +9,50 @@ import {BasePage} from "../base.page";
 
 
 @Component({
-    selector: 'groups-page',
-    templateUrl: 'groups.page.html',
+  selector: 'groups-page',
+  templateUrl: 'groups.page.html',
 })
 export class GroupsPage extends BasePage {
-    sourceGroups: IGroup[];
-    groups: IGroup[];
-    searchQuery: string;
-    activeItem: IGroup = null;
+  sourceGroups: IGroup[];
+  groups: IGroup[];
+  searchQuery: string;
+  activeItem: IGroup = null;
 
-    constructor(private data: GroupsService, private nav: NavController, private fs: FirebaseService, toastCtrl: ToastController) {
-        super(toastCtrl);
-        this.searchQuery = '';
-        //async implement in new version
-        data.getGroups().subscribe(data=> {
-            this.sourceGroups = this.groups = data;
-            //render if filter is active
-            this.getItems();
-        });
-    }
+  constructor(private data: GroupsService, private nav: NavController, private fs: FirebaseService, toastCtrl: ToastController) {
+    super(toastCtrl);
+    this.searchQuery = '';
+    //async implement in new version
+    data.getGroups().subscribe(data => {
+      this.sourceGroups = this.groups = data;
+      //render if filter is active
+      this.getItems();
+    });
+  }
 
-    public getItems() {
-        let q = this.searchQuery;
-        this.groups = this.sourceGroups.filter((v) => {
-            return (v.name != null && v.name.split(' ').join('').toLowerCase().indexOf(q.split(' ').join('').toLowerCase()) > -1);
-        })
-    }
+  getItems() {
+    let q = this.searchQuery;
+    this.groups = this.sourceGroups.filter((v) => {
+      return (v.name != null && v.name.split(' ').join('').toLowerCase().indexOf(q.split(' ').join('').toLowerCase()) > -1);
+    })
+  }
 
-    public doAction(item:any) {
-        LogService.logMessage("doAction in GroupPage");
-        if (this.activeItem === item) {
-            this.data.removeInvite(item, UserService.getCurrentUser(), ()=> {
-                this.presentToast("Заявка на вступление в группу отменена");
-                this.activeItem = null;
-            });
-        } else {
-            this.data.createInvite(item, ()=> {
-                this.presentToast("Заявка на вступление в группу отправлена");
-                this.activeItem = item;
-            });
-        }
+  doAction(item: any) {
+    LogService.logMessage("doAction in GroupPage");
+    if (this.activeItem === item) {
+      this.data.removeInvite(item, UserService.getCurrentUser(), () => {
+        this.presentToast("Заявка на вступление в группу отменена");
+        this.activeItem = null;
+      });
+    } else {
+      this.data.createInvite(item, () => {
+        this.presentToast("Заявка на вступление в группу отправлена");
+        this.activeItem = item;
+      });
     }
+  }
 
-    public logout() {
-        this.fs.logout();
-    }
+  logout() {
+    this.fs.logout();
+  }
 
 }

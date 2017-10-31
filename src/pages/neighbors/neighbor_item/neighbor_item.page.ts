@@ -7,28 +7,28 @@ import {UserService} from "../../../services/user.service";
 import {PrivateItemPage} from "../../chat/private_item/private_item.page";
 
 @Component({
-    selector: 'neighbors-item-page',
-    templateUrl: 'neighbor_item.page.html',
+  selector: 'neighbors-item-page',
+  templateUrl: 'neighbor_item.page.html',
 })
 export class NeighborItemPage extends BasePage {
-    private neighbor: IUser;
-    private user: IUser;
+  neighbor: IUser;
+  user: IUser;
 
-    constructor(private nav: NavController, navParams: NavParams, private data: ChatService, toastCtrl: ToastController) {
-        super(toastCtrl);
-        this.neighbor = navParams.get("item");
-        this.user = UserService.getCurrentUser();
-    }
+  constructor(private nav: NavController, navParams: NavParams, private data: ChatService, toastCtrl: ToastController) {
+    super(toastCtrl);
+    this.neighbor = navParams.get("item");
+    this.user = UserService.getCurrentUser();
+  }
 
-    public addPrivateChat() {
-        this.data.addPrivateRoom(this.neighbor, (error:any)=> {
-            if (error) {
-                this.presentToast("Error: " + error);
-            }
-        }, (chat_key:any)=> {
-            this.data.getRoom("private_rooms/" + this.user.memberOf + "/" + UserService.getCurrentUser().uid + "/" + chat_key, (room:any)=> {
-                this.nav.push(PrivateItemPage, {chatId: room});
-            });
-        })
-    }
+  addPrivateChat() {
+    this.data.addPrivateRoom(this.neighbor, (error: any) => {
+      if (error) {
+        this.presentToast("Error: " + error);
+      }
+    }, (chat_key: any) => {
+      this.data.getRoom("private_rooms/" + this.user.memberOf + "/" + UserService.getCurrentUser().uid + "/" + chat_key, (room: any) => {
+        this.nav.push(PrivateItemPage, {chatId: room});
+      });
+    })
+  }
 }
