@@ -41,7 +41,7 @@ export class MyApp extends BasePage {
   loggedInPages: PageInterface[] = [
     {title: 'Соседи', name: "TabsPage", component: TabsPage, icon: 'md-people', index: 3},
     {title: 'Коммунальные услуги', name: "UtilitiesPage", component: UtilitiesPage, icon: 'calculator'},
-    {title: 'Доска объявлений', name: "BoardPage", component: BoardPage, icon: 'calendar', index: 1},
+    {title: 'Доска объявлений', name: "BoardPage", component: BoardPage, icon: 'calendar'},
     {title: 'Выход', name: 'TabsPage', component: TabsPage, icon: 'log-out', logsOut: true}
 
   ];
@@ -159,6 +159,8 @@ export class MyApp extends BasePage {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
+      this.statusBar.hide();
+      this.statusBar.overlaysWebView(false);
       if (this.db.isLogged()) {
         this.rootPage = TabsPage;
         this.enableMenu(true);
