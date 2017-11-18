@@ -1,0 +1,31 @@
+start-page {
+  .toolbar-background{
+    background-color: #ffc97a;
+  }
+
+  .slides {
+    background: linear-gradient(to top, #ff8a75, #ffc97a);
+    height: 40%;
+  }
+
+  .grid {
+    height: 60%;
+  }
+
+  .grid .row {
+    height: 33%;
+  }
+
+  .grid .row .col .icon {
+    font-size: 56px; //Preferred size here
+    color: map-get($colors, app_primary)
+  }
+
+  a {
+    color: map-get($colors, app_primary)
+  }
+
+  .swiper-pagination-bullet-active{
+    background-color: map-get($colors, app_primary)
+  }
+}

@@ -1,15 +1,66 @@
 <ion-header>
-    <ion-navbar>
-        <button ion-button icon-only menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>
-            Добро пожаловать
-        </ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Добро пожаловать
+    </ion-title>
+  </ion-navbar>
 </ion-header>
-<ion-content>
-    <div style="position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
-        <a ion-button (click)="test()">Открыть ворота</a>
-    </div>
+<ion-content no-bounce class="no-scroll">
+  <ion-slides autoplay="5000" loop="true" pager>
+    <ion-slide>
+      <img src="assets/img/logo.png">
+    </ion-slide>
+    <ion-slide>
+      <h1>Banner 2</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Banner 3</h1>
+    </ion-slide>
+  </ion-slides>
+  <ion-grid>
+    <ion-row align-items-center>
+      <ion-col col-12 text-center justify-content-center>
+        <a class="button" (click)="openDoor();">
+          <ion-icon role="img" name="exit"></ion-icon>&nbsp;<h3>Открыть ворота</h3></a>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col text-center>
+        <a class="button" (click)="openPage(1);">
+          <ion-icon role="img" name="people"></ion-icon>
+          <br>Соседи</a>
+      </ion-col>
+      <ion-col text-center>
+        <a class="button" (click)="openPage(5);">
+          <ion-icon role="img" name="paper-plane"></ion-icon>
+          <br>События</a>
+      </ion-col>
+      <ion-col text-center>
+        <a class="button" (click)="openPage(6);">
+          <ion-icon role="img" name="chatboxes"></ion-icon>
+          <br>Общение</a>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col text-center>
+        <a class="button" (click)="openPage(2, true);">
+          <ion-icon role="img" name="calculator"></ion-icon>
+          <br>Ком.услуги</a>
+      </ion-col>
+      <ion-col text-center>
+        <a class="button" (click)="openPage(3);">
+          <ion-icon role="img" name="calendar"></ion-icon>
+          <br>Объявления</a>
+      </ion-col>
+      <ion-col text-center>
+        <a class="button" (click)="openPage(8,true);">
+          <ion-icon role="img" name="contact"></ion-icon>
+          <br>Профайл</a>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 </ion-content>
