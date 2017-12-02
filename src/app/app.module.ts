@@ -46,6 +46,7 @@ import {UtilitiesPage} from "../pages/utilities/utilities.page";
 import {KeyboardAttachDirective} from "../component/keyboard-attach.directive";
 import {LoginPage} from "../pages/login/login.page";
 import {CallNumber} from "@ionic-native/call-number";
+import {TutorialPage} from "../pages/tutorial/tutorial";
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import {CallNumber} from "@ionic-native/call-number";
     StartPage,
     UtilitiesPage,
     AvatarComponent,
+    TutorialPage,
     LoadingModal,
     KeyboardAttachDirective
   ],
@@ -109,6 +111,7 @@ import {CallNumber} from "@ionic-native/call-number";
     NeighborsPage,
     ProfilePage,
     SignupPage,
+    TutorialPage,
     StartPage,
     UtilitiesPage,
     AvatarComponent,

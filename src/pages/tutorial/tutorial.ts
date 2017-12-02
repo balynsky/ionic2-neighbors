@@ -3,8 +3,8 @@ import {Component, ViewChild} from '@angular/core';
 import {MenuController, NavController, Slides} from 'ionic-angular';
 
 import {Storage} from '@ionic/storage';
+import {StartPage} from "../start/start.page";
 
-import {TabsPage} from '../tabs/tabs';
 
 @Component({
   selector: 'page-tutorial',
@@ -22,7 +22,7 @@ export class TutorialPage {
   }
 
   startApp() {
-    this.navCtrl.push(TabsPage).then(() => {
+    this.navCtrl.push(StartPage).then(() => {
       this.storage.set('hasSeenTutorial', 'true');
     })
   }
