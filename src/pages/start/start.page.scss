@@ -1,6 +1,6 @@
 start-page {
   .toolbar-background{
-    background-color: #ffc97a;
+    background-color: #ffc97a!important;
   }
 
   .slides {
@@ -18,14 +18,14 @@ start-page {
 
   .grid .row .col .icon {
     font-size: 56px; //Preferred size here
-    color: map-get($colors, app_primary)
+    color: map-get($colors, primary)
   }
 
   a {
-    color: map-get($colors, app_primary)
+    color: map-get($colors, primary)
   }
 
   .swiper-pagination-bullet-active{
-    background-color: map-get($colors, app_primary)
+    background-color: map-get($colors, primary)
   }
 }

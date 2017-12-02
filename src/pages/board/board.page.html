@@ -16,7 +16,7 @@
 
     </ion-navbar>
 </ion-header>
-<ion-content class="outer-content">
+<ion-content class="outer-content no-scroll">
     <ion-list>
         <ion-item-sliding *ngFor="let room of rooms | async">
             <button ion-item no-border (click)="openRoom(room)">

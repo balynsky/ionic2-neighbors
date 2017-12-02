@@ -11,7 +11,6 @@
   }
 }
 
-
 // Name of the next breakpoint, or null for the last breakpoint.
 //
 //    >> breakpoint-next(sm)
@@ -25,7 +24,6 @@
   @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
 
-
 // Maximum breakpoint width. Null for the largest (last) breakpoint.
 // The maximum value is calculated as the minimum of the next one less 0.1.
 //
@@ -35,7 +33,6 @@
   $next: breakpoint-next($name, $breakpoints);
   @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
 }
-
 
 // Creates text alignment classes based on screen size
 // TODO this would be nice to add to the framework
@@ -68,8 +65,50 @@
   }
 }
 
+.toolbar-background {
+  background-color: map-get($colors, toolbar-color);
+}
+
+.toolbar-title, .bar-buttons, .bar-button {
+  color: map-get($colors, toolbar-text);
+}
+
+.segment-button {
+  color: map-get($colors, text-light) !important;
+}
+
+.segment-activated {
+  color: map-get($colors, text-primary) !important;
+}
+
 .no-scroll {
   .scroll-content {
-    overflow: hidden !important;
+    overflow: auto !important;
+  }
+}
+
+.content {
+  background-color: #EFEFF4;
+}
+
+#loggedInMenu, #loggedOutMenu {
+  .outer-content {
+    background: linear-gradient(to top, map-get($colors, primary-reverse), map-get($colors, primary));
+  }
+
+  .item-md, .item-inner {
+    border: none !important;
+  }
+
+  .list-header .label {
+    color: map_get($colors, text-light) !important;
+  }
+
+  .item-inner .label, .item-icon {
+    color: map_get($colors, text-primary);
+  }
+
+  .item {
+    background: transparent !important;
   }
 }

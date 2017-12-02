@@ -1,0 +1,14 @@
+apptabs-page {
+  .tabbar{
+    background-color: map-get($colors, tabs-color);
+  }
+
+  .tab-button {
+    background-color: map-get($colors, tabs-color);
+    color: map-get($colors, toolbar-text)!important;
+  }
+
+  .tab-button-icon {
+    color: map-get($colors, toolbar-text)!important;
+  }
+}

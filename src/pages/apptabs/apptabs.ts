@@ -6,7 +6,8 @@ import {NeighborsPage} from "../neighbors/neighbors.page";
 import {StartPage} from "../start/start.page";
 
 @Component({
-  templateUrl: 'apptabs.html'
+  templateUrl: 'apptabs.html',
+  selector:'apptabs-page'
 })
 export class TabsPage {
   // this tells the tabs component which Pages

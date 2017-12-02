@@ -4,11 +4,11 @@ login-page {
   }
 
   .log-in-btn {
-    background-color: map-get($colors, app_primary);
+    background-color: map-get($colors, primary);
   }
 
   .reg-btn {
-    color: map-get($colors, app_primary);
+    color: map-get($colors, primary);
   }
 
   .logo {
@@ -19,18 +19,18 @@ login-page {
 
   .border {
     margin: 12%;
-    border: 3px solid map-get($colors, app_primary);
+    border: 3px solid map-get($colors, primary);
     padding: 7px;
   }
 
   .label {
-    color: map-get($colors, app_primary);
+    color: map-get($colors, primary);
     text-align: center;
     font-size: larger;
   }
 
   .input {
-    color: map-get($colors, app_primary);
+    color: map-get($colors, primary);
   }
 
   .item-inner:not(.item-input-has-focus) {
@@ -38,7 +38,7 @@ login-page {
   }
 
   .item-inner {
-    border-bottom: 2px solid map-get($colors, app_primary)!important;
+    border-bottom: 2px solid map-get($colors, primary)!important;
     box-shadow: none;
   }
 

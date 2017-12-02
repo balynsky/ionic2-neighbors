@@ -14,9 +14,9 @@
 
     </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content class="no-scroll">
     <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems()" (ionCancel)="clearFilter()" [showCancelButton]="true"></ion-searchbar>
-    <ion-list>
+    <ion-list sroll>
         <ion-item-sliding *ngFor="let item of neighbors">
             <ion-item (click)="openDetail(item)">
                 <ion-avatar item-left>

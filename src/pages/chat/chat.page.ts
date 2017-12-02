@@ -13,6 +13,7 @@ import {BasePage} from "../base.page";
 
 @Component({
   templateUrl: 'chat.page.html',
+  selector: 'chat-page'
 })
 export class ChatPage extends BasePage {
   user: IUser;

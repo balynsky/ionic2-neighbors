@@ -12,6 +12,7 @@ import {BoardItemPage} from "./item/board_item.page";
 
 @Component({
   templateUrl: 'board.page.html',
+  selector:'board-page'
 })
 export class BoardPage extends BasePage {
   user: IUser;

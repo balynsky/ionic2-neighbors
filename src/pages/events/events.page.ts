@@ -9,6 +9,7 @@ import {AddEventPage} from "./add_event/add_event.page";
 
 @Component({
   templateUrl: 'events.page.html',
+  selector:'events-list'
 })
 export class EventsPage {
   items: Observable<any>;
