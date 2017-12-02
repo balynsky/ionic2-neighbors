@@ -43,7 +43,6 @@ import {NeighborItemPage} from "../pages/neighbors/neighbor_item/neighbor_item.p
 import {NeighborsPage} from "../pages/neighbors/neighbors.page";
 import {SignupPage} from "../pages/signup/signup.page";
 import {UtilitiesPage} from "../pages/utilities/utilities.page";
-import {KeyboardAttachDirective} from "../component/keyboard-attach.directive";
 import {LoginPage} from "../pages/login/login.page";
 import {CallNumber} from "@ionic-native/call-number";
 import {TutorialPage} from "../pages/tutorial/tutorial";
@@ -74,8 +73,7 @@ import {TutorialPage} from "../pages/tutorial/tutorial";
     UtilitiesPage,
     AvatarComponent,
     TutorialPage,
-    LoadingModal,
-    KeyboardAttachDirective
+    LoadingModal
   ],
   imports: [
     BrowserModule,
