@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
   height: 180px;
+  background-color: white;
 }
 
 .bgImageContainer {
@@ -22,15 +23,15 @@
 }
 
 .profileAvatar {
-  top: 120px;
+  top: 90px;
   left: 50%;
-  margin-left: -50px;
-  margin-top: -50px;
+  margin-left: -75px;
+  margin-top: -75px;
   position: absolute;
   overflow: hidden;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border: 2px solid #fff;
 
 }

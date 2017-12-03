@@ -1,0 +1,9 @@
+invites-page {
+  .searchbar{
+    background-color: map-get($colors, toolbar-color);
+  }
+
+  .searchbar-ios-cancel {
+    color: map-get($colors, toolbar-text);
+  }
+}

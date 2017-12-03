@@ -9,6 +9,7 @@ import {Group} from "../../../model/group";
 
 @Component({
   templateUrl: 'invites.page.html',
+  selector: 'invites-page'
 })
 export class InvitesPage extends BasePage {
   sourceUsers: IUser[];
