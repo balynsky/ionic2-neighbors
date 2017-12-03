@@ -49,7 +49,7 @@ export class LoginPage extends BasePage {
         this.presentToast(error);
       });
     } else {
-      let provider = this.db.getFacebookProvider();
+      let provider = FirebaseService.getFacebookProvider();
       this.db.auth.signInWithPopup(provider).then((result: any) => {
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         //var token = result.credential.accessToken;
@@ -67,8 +67,7 @@ export class LoginPage extends BasePage {
       let browserRef = (<any>cordova).InAppBrowser.open("https://www.facebook.com/v2.0/dialog/oauth?client_id=245599175811882&redirect_uri=http://balynsky.com/callback&response_type=token&scope=email", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
       browserRef.addEventListener("loadstart", (event: any) => {
         if ((event.url).indexOf("http://balynsky.com/callback") === 0) {
-          browserRef.removeEventListener("exit", (event: any) => {
-          });
+          browserRef.removeEventListener("exit", (event: any) => {});
           browserRef.close();
           let responseParameters = ((event.url).split("#")[1]).split("&");
           let parsedResponse = {};

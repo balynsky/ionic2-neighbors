@@ -52,14 +52,9 @@ export class FirebaseService {
     });
   }
 
-  getFacebookProvider() {
+  static getFacebookProvider() {
     //noinspection TypeScriptUnresolvedVariable
     return new firebase.auth.FacebookAuthProvider();
-  }
-
-  getGoogleProvider() {
-    //noinspection TypeScriptUnresolvedVariable
-    return new firebase.auth.GoogleAuthProvider();
   }
 
   loginWithFacebookAccessToken(token: any) {
@@ -73,6 +68,7 @@ export class FirebaseService {
       this.fs.db.ref("users/" + token).update({
         'photoURL': user.photoURL
       });
+
     }).catch(function (error: any) {
       LogService.logMessage("Error: ", error);
     });

@@ -92,6 +92,7 @@ export class MyApp extends BasePage {
       LogService.logMessage(" listenToLoginEvents user:new");
       this.enableMenu(true);
       this.rootPage = ProfilePage;
+      this.hideCustomLoading();
     });
 
 
