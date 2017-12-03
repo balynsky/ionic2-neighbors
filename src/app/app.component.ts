@@ -65,10 +65,6 @@ export class MyApp extends BasePage {
 
   listenToLoginEvents() {
     this.events.subscribe('user:login', () => {
-      this.enableMenu(true);
-    });
-
-    this.events.subscribe('user:login', () => {
       this.showCustomLoading("Загрузка данных о пользователе");
       this.userService.loadUserData();
     });
@@ -79,6 +75,7 @@ export class MyApp extends BasePage {
       if (this.currentUser.memberOf == null || typeof this.currentUser.memberOf === 'undefined') {
         LogService.logMessage("this.currentUser.memberOf is undefined");
         this.rootPage = GroupsPage;
+        this.enableMenu(false);
         this.hideCustomLoading();
       } else {
         //if user in group - show interface

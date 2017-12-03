@@ -69,7 +69,7 @@
   background-color: map-get($colors, toolbar-color);
 }
 
-.toolbar-title, .bar-buttons, .bar-button {
+.toolbar-title, .bar-buttons, .bar-button, .bar-button .text{
   color: map-get($colors, toolbar-text);
 }
 
