@@ -1,9 +1,9 @@
 neighbors-page {
-  .toolbar-background, .searchbar{
+  .searchbar{
     background-color: map-get($colors, toolbar-color);
   }
 
-  .toolbar-title, .bar-buttons, .bar-button, .searchbar-ios-cancel {
+  .searchbar-ios-cancel {
     color: map-get($colors, toolbar-text);
   }
 }

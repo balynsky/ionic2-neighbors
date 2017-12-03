@@ -2,4 +2,12 @@ groups-page {
   .group_active {
     background-color: #FFFFE0;
   }
+  .searchbar {
+    background-color: map-get($colors, toolbar-color);
+  }
+
+  .searchbar-ios-cancel {
+    color: map-get($colors, toolbar-text);
+  }
+
 }
