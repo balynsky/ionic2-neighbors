@@ -79,6 +79,7 @@ export class MyApp extends BasePage {
       if (this.currentUser.memberOf == null || typeof this.currentUser.memberOf === 'undefined') {
         LogService.logMessage("this.currentUser.memberOf is undefined");
         this.rootPage = GroupsPage;
+        this.hideCustomLoading();
       } else {
         //if user in group - show interface
         this.enableMenu(true);
