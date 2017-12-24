@@ -15,7 +15,7 @@
     <ion-list>
         <form [formGroup]="form" novalidate>
             <ion-item class="no-border" [class.error]="!name.valid && name.touched">
-                <ion-label floating>Наименование</ion-label>
+                <ion-label stacked>Наименование</ion-label>
                 <ion-input formControlName="name" type="text"></ion-input>
             </ion-item>
         </form>

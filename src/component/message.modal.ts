@@ -14,12 +14,14 @@ import {Component} from "@angular/core";
             <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
           </button>
         </ion-buttons>
+<!--
         <ion-buttons end>
           <button ion-button (click)="send()">
             <span ion-text color="primary" showWhen="ios">Отправить</span>
             <ion-icon name="md-send" showWhen="android,windows"></ion-icon>
           </button>
         </ion-buttons>
+-->
       </ion-toolbar>
     </ion-header>
 
@@ -30,6 +32,13 @@ import {Component} from "@angular/core";
           <ion-textarea rows="5" autosize clearInput [(ngModel)]="message"></ion-textarea>
         </ion-item>
       </ion-list>
+      <div padding>
+        <button ion-button block (click)="send()">
+          <ion-icon name="add"></ion-icon>
+          &nbsp;Отправить
+        </button>
+      </div>
+
     </ion-content>
   `
 })
