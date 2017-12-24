@@ -11,19 +11,19 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content class="no-scroll">
     <ion-list>
         <form [formGroup]="eventForm" novalidate>
             <ion-item class="no-border">
-                <ion-label>Наименование</ion-label>
+                <ion-label stacked>Наименование</ion-label>
                 <ion-input formControlName="name"></ion-input>
             </ion-item>
             <ion-item class="no-border">
-                <ion-label>Описание</ion-label>
+                <ion-label stacked>Описание</ion-label>
                 <ion-textarea formControlName="text"></ion-textarea>
             </ion-item>
             <ion-item class="no-border">
-                <ion-label>Путь к картинке</ion-label>
+                <ion-label stacked>Путь к картинке</ion-label>
                 <ion-input formControlName="imgSrc"></ion-input>
             </ion-item>
         </form>
