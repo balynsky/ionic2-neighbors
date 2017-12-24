@@ -40,6 +40,10 @@ $colors: (
 $segment-button-md-border-bottom-color: map-get($colors, text-light);
 $segment-button-md-border-color-activated: transparent;
 
+$text-input-md-show-focus-highlight: false !default;
+$text-input-md-show-valid-highlight: $text-input-md-show-focus-highlight !default;
+$text-input-md-show-invalid-highlight: $text-input-md-show-focus-highlight !default;
+
 @import "ionic.theme.default";
 
 // Ionicons

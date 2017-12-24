@@ -20,8 +20,9 @@
   <ion-list>
     <form [formGroup]="form">
       <ion-item>
-        <ion-label primary>
+        <ion-label primary stacked>
           <ion-icon name="contact"></ion-icon>
+          &nbsp; Фамилия и Имя
         </ion-label>
         <ion-input formControlName="displayName" type="text" required clearInput></ion-input>
       </ion-item>
@@ -30,11 +31,11 @@
       </p>
 
       <ion-item>
-        <ion-label primary>
+        <ion-label primary stacked>
           <ion-icon name="car"></ion-icon>
           &nbsp;Номер автомобиля
         </ion-label>
-        <ion-input formControlName="auto" type="text">
+        <ion-input formControlName="auto" type="text" clearInput>
         </ion-input>
       </ion-item>
       <p [hidden]="auto.valid" danger padding-left>
@@ -42,11 +43,11 @@
       </p>
 
       <ion-item>
-        <ion-label primary>
+        <ion-label primary stacked>
           <ion-icon name="car"></ion-icon>
           &nbsp;Номер автомобиля 2
         </ion-label>
-        <ion-input formControlName="auto2" type="text">
+        <ion-input formControlName="auto2" type="text" clearInput>
         </ion-input>
       </ion-item>
       <p [hidden]="auto.valid" danger padding-left>
@@ -54,11 +55,11 @@
       </p>
 
       <ion-item>
-        <ion-label primary>
+        <ion-label primary stacked>
           <ion-icon name="home"></ion-icon>
           &nbsp;Номер дома
         </ion-label>
-        <ion-input formControlName="houseNumber" type="text">
+        <ion-input formControlName="houseNumber" type="text" required clearInput>
         </ion-input>
       </ion-item>
       <p [hidden]="houseNumber.valid" danger padding-left>
@@ -66,11 +67,11 @@
       </p>
 
       <ion-item>
-        <ion-label primary>
+        <ion-label primary stacked>
           <ion-icon name="home"></ion-icon>
           &nbsp;Номер квартиры
         </ion-label>
-        <ion-input formControlName="flatNumber" type="number" required>
+        <ion-input formControlName="flatNumber" type="text" required clearInput>
         </ion-input>
       </ion-item>
       <p [hidden]="flatNumber.valid" danger padding-left>
@@ -78,11 +79,11 @@
       </p>
 
       <ion-item>
-        <ion-label primary>
+        <ion-label primary stacked>
           <ion-icon name="mail"></ion-icon>
           &nbsp;Эл. почта
         </ion-label>
-        <ion-input formControlName="mail" type="email">
+        <ion-input formControlName="mail" type="email" clearInput>
         </ion-input>
       </ion-item>
       <p [hidden]="mail.valid" danger padding-left>
@@ -90,11 +91,11 @@
       </p>
 
       <ion-item>
-        <ion-label primary>
+        <ion-label primary stacked>
           <ion-icon name="phone-portrait"></ion-icon>
-          &nbsp;Телефон(1)
+          &nbsp;Основной телефон
         </ion-label>
-        <ion-input formControlName="mobile1" type="text" required>
+        <ion-input formControlName="mobile1" type="text" required clearInput>
         </ion-input>
       </ion-item>
       <p [hidden]="mobile1.valid" danger padding-left>
@@ -102,11 +103,11 @@
       </p>
 
       <ion-item>
-        <ion-label primary>
+        <ion-label primary stacked>
           <ion-icon name="phone-portrait"></ion-icon>
-          &nbsp;Телефон(2)
+          &nbsp;Дополнительный телефон
         </ion-label>
-        <ion-input formControlName="mobile2" type="text">
+        <ion-input formControlName="mobile2" type="text" clearInput>
         </ion-input>
       </ion-item>
       <p [hidden]="mobile2.valid" danger padding-left>

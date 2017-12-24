@@ -10,7 +10,8 @@ import {FirebaseService} from "../../services/firebase.service";
 
 
 @Component({
-  templateUrl: 'profile.page.html'
+  templateUrl: 'profile.page.html',
+  selector: "profile-page"
 })
 export class ProfilePage extends BasePage {
   form: FormGroup;
@@ -39,12 +40,12 @@ export class ProfilePage extends BasePage {
 
     LogService.logMessage("ProfilePage constructor ", this.user);
     this.form = new FormGroup({
-      mail: new FormControl(this.user.mail, Validators.compose([Validators.required, ValidationService.emailValidator])),
+      mail: new FormControl(this.user.mail, Validators.compose([ValidationService.emailValidator])),
       displayName: new FormControl(this.user.displayName, Validators.compose([Validators.required, Validators.minLength(8)])),
       auto: new FormControl(this.user.auto),
       auto2: new FormControl(this.user.auto2),
       houseNumber: new FormControl(this.user.houseNumber),
-      flatNumber: new FormControl(this.user.flatNumber, Validators.compose([Validators.required])),
+      flatNumber: new FormControl(this.user.flatNumber, Validators.compose([Validators.required, ValidationService.digitalValidator])),
       mobile1: new FormControl(this.user.mobile1, Validators.compose([Validators.required, Validators.minLength(8)])),
       mobile2: new FormControl(this.user.mobile2),
       photoURL: new FormControl(this.user.photoURL)

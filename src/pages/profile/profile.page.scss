@@ -1,55 +1,61 @@
-#profileBanner {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  height: 180px;
-  background-color: white;
-}
+profile-page {
+  #profileBanner {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 180px;
+    background-color: white;
+  }
 
-.bgImageContainer {
-  width: 100%;
-  height: 180px;
-  -webkit-filter: blur(5px);
-  z-index: 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-}
+  .bgImageContainer {
+    width: 100%;
+    height: 180px;
+    -webkit-filter: blur(5px);
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+  }
 
-.avatar {
-  z-index: 10;
-  height: 100%;
-  position: relative;
-}
+  .avatar {
+    z-index: 10;
+    height: 100%;
+    position: relative;
+  }
 
-.profileAvatar {
-  top: 90px;
-  left: 50%;
-  margin-left: -75px;
-  margin-top: -75px;
-  position: absolute;
-  overflow: hidden;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  border: 2px solid #fff;
+  .profileAvatar {
+    top: 90px;
+    left: 50%;
+    margin-left: -75px;
+    margin-top: -75px;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 2px solid #fff;
 
-}
+  }
 
-.profileAvatar img {
-  overflow: hidden;
-  max-width: 100%;
-}
+  .profileAvatar img {
+    overflow: hidden;
+    max-width: 100%;
+  }
 
-.editAvatar {
-  position: absolute;
-  bottom: 0;
-  left: 35px;
-  font-size: 2.6rem;
+  .editAvatar {
+    position: absolute;
+    bottom: 0;
+    left: 35px;
+    font-size: 2.6rem;
 
-}
+  }
 
-#changePicture {
-  color: white !important;
+  #changePicture {
+    color: white !important;
+  }
+
+  .item-md{
+    border: none!important;
+  }
 }
 
