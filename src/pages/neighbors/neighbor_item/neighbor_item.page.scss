@@ -1,10 +1,21 @@
 neighbors-item-page {
   .details {
     display: flex;
+    background-color: map_get($colors, primary);
+    color: map_get($colors, text-primary);;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 10px;
   }
 
   .details img {
     border-radius: 50%;
-    padding: 5px;
+    padding: 9px;
+  }
+
+  .content {
+    /*
+    background-image: url(/assets/img/blue-background.jpg) !important;
+    */
   }
 }
