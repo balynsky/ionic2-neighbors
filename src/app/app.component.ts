@@ -88,7 +88,7 @@ export class MyApp extends BasePage {
 
     this.events.subscribe('user:new', () => {
       LogService.logMessage(" listenToLoginEvents user:new");
-      this.enableMenu(true);
+      this.enableMenu(false);
       this.rootPage = ProfilePage;
       this.hideCustomLoading();
     });
