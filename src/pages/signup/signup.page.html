@@ -7,15 +7,15 @@
     </ion-navbar>
 </ion-header>
 <ion-content class="login-page">
+  <div class="center"></div>
+  <div class="logo">
+    <img src="assets/img/logo.png"/>
+  </div>
 
     <ion-list>
-        <div class="logo">
-            <img src="assets/img/logo.png">
-        </div>
-
-        <form [formGroup]="FORM" novalidate>
+        <form [formGroup]="form" novalidate>
             <ion-item>
-                <ion-label floating primary>Логин</ion-label>
+                <ion-label stacked primary>Эл. почта</ion-label>
                 <ion-input formControlName="login" type="email" required>
                 </ion-input>
             </ion-item>
@@ -24,7 +24,7 @@
             </p>
 
             <ion-item>
-                <ion-label floating primary>Пароль</ion-label>
+                <ion-label stacked primary>Пароль</ion-label>
                 <ion-input formControlName="password" type="password" required>
                 </ion-input>
             </ion-item>

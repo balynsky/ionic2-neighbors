@@ -7,7 +7,7 @@ import {StartPage} from "../start/start.page";
 
 @Component({
   templateUrl: 'apptabs.html',
-  selector:'apptabs-page'
+  selector: 'apptabs-page'
 })
 export class TabsPage {
   // this tells the tabs component which Pages

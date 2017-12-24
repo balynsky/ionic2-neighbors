@@ -7,7 +7,8 @@ import {BasePage} from "../base.page";
 
 
 @Component({
-  templateUrl: 'signup.page.html'
+  templateUrl: 'signup.page.html',
+  selector: 'signup-page'
 })
 export class SignupPage extends BasePage {
   form: FormGroup;

@@ -11,7 +11,7 @@ import {FirebaseService} from "../../services/firebase.service";
 
 @Component({
   templateUrl: 'profile.page.html',
-  selector: "profile-page"
+  selector: 'profile-page'
 })
 export class ProfilePage extends BasePage {
   form: FormGroup;
