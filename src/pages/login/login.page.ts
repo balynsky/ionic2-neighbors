@@ -18,9 +18,10 @@ export class LoginPage extends BasePage {
   login: AbstractControl;
   password: AbstractControl;
 
+  //test@test.com : 123456
   loginForm = new FormGroup({
-    login: new FormControl('test@test.com', Validators.compose([Validators.required, ValidationService.emailValidator])),
-    password: new FormControl('123456', Validators.compose([Validators.required, Validators.minLength(8)]))
+    login: new FormControl('', Validators.compose([Validators.required, ValidationService.emailValidator])),
+    password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)]))
   });
 
   constructor(private nav: NavController, private db: FirebaseService, private events: Events, toastCtrl: ToastController, private us: UserService) {
